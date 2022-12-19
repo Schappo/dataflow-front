@@ -4,7 +4,24 @@
   justify-content: space-between;
   align-items: center;
   padding: 6rem;
-  min-height: 100vh;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.form > * {
+  margin: 5px;
+}
+
+.main > * {
+  margin: 10px;
 }
 
 .description {
