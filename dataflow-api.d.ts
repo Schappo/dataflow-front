@@ -724,6 +724,7 @@ declare const appRouter: _trpc_server.CreateRouterInner<_trpc_server.RootConfig<
                     tenant_id: string;
                     wallet_id: string;
                     owner_id: string;
+                    verification_nonce: number;
                 };
                 wallets: {
                     type: WalletTypeEnum;
@@ -732,6 +733,7 @@ declare const appRouter: _trpc_server.CreateRouterInner<_trpc_server.RootConfig<
                     tenant_id: string;
                     wallet_id: string;
                     owner_id: string;
+                    verification_nonce: number;
                 }[];
             }[];
             _output_out: {
@@ -747,6 +749,7 @@ declare const appRouter: _trpc_server.CreateRouterInner<_trpc_server.RootConfig<
                     tenant_id: string;
                     wallet_id: string;
                     owner_id: string;
+                    verification_nonce: number;
                 };
                 wallets: {
                     type: WalletTypeEnum;
@@ -755,6 +758,7 @@ declare const appRouter: _trpc_server.CreateRouterInner<_trpc_server.RootConfig<
                     tenant_id: string;
                     wallet_id: string;
                     owner_id: string;
+                    verification_nonce: number;
                 }[];
             }[];
         }, unknown>;

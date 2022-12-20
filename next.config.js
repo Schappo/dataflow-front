@@ -1,6 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  env: {
+    token: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmMmI3NDY5Ny0xYmRkLTQ2ZTctOTVhNS02NDFjYzdhYTFjMWIiLCJpc3MiOiI3MGUxZGE5Mi1mMjk1LTQ3OTgtYTQxMS1hMTNmZjAzNWUxNTYiLCJhdWQiOiI3MGUxZGE5Mi1mMjk1LTQ3OTgtYTQxMS1hMTNmZjAzNWUxNTYiLCJlbWFpbCI6InVzZXJAZXhhbXBsZS5jb20iLCJuYW1lIjoidGVzdGUtMSIsInJvbGVzIjpbInN1cGVyQWRtaW4iXSwidGVuYW50SWQiOiI3MGUxZGE5Mi1mMjk1LTQ3OTgtYTQxMS1hMTNmZjAzNWUxNTYiLCJ2ZXJpZmllZCI6ZmFsc2UsInR5cGUiOiJ1c2VyIiwiaWF0IjoxNjcxNTA4MTkzLCJleHAiOjE2NzE1MDkwOTN9.Cel3JsxU9ZVfNAb39CBoZJnlpqKtEyPqyxX6RA_-_tz8a9m2jzbAlmCZPGlWXaqBvq7Il8MDQxGpYJRxPpb9b26g3LSdFmnBmKM7QIShbgZaDvkBujSAwm6l4ydJWwQ_YtLrQaaqTp6Y9rc8vYIne6_FSXFEIs1le6WQoXhg3kI',
+    baseUrl: 'http://localhost:3000/trpc'
+  },
 }
 
 module.exports = nextConfig
