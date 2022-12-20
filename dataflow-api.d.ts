@@ -1,4 +1,5 @@
 import * as _trpc_server from '@trpc/server';
+import { inferRouterInputs, inferRouterOutputs } from '@trpc/server';
 import { OnModuleInit, INestApplication, Logger, OnModuleDestroy } from '@nestjs/common';
 import { Sql } from 'postgres';
 import { PrismaClient, ComponentType } from '@prisma/client';
@@ -653,35 +654,35 @@ declare const appRouter: _trpc_server.CreateRouterInner<_trpc_server.RootConfig<
                 tenantId: string;
             };
             _output_in: {
+                tenantId: string;
                 addresses: string[];
-                tenant_id: string;
-                user_id: string;
-                royalty_contracts: {
+                userId: string;
+                royaltyContracts: {
                     id: string;
-                    company_id: string;
+                    companyId: string;
                     platform: {};
                     address: string;
                     participants: {}[];
                     blockchain: {}[];
-                    chain_id: number;
-                    contract_action_id: string;
-                    is_contract: boolean;
+                    chainId: number;
+                    contractActionId: string;
+                    isContract: boolean;
                 }[];
             }[];
             _output_out: {
+                tenantId: string;
                 addresses: string[];
-                tenant_id: string;
-                user_id: string;
-                royalty_contracts: {
+                userId: string;
+                royaltyContracts: {
                     id: string;
-                    company_id: string;
+                    companyId: string;
                     platform: {};
                     address: string;
                     participants: {}[];
                     blockchain: {}[];
-                    chain_id: number;
-                    contract_action_id: string;
-                    is_contract: boolean;
+                    chainId: number;
+                    contractActionId: string;
+                    isContract: boolean;
                 }[];
             }[];
         }, unknown>;
@@ -712,53 +713,53 @@ declare const appRouter: _trpc_server.CreateRouterInner<_trpc_server.RootConfig<
                 tenantId: string;
             };
             _output_in: {
-                name: string;
-                roles: UserRoleEnum[];
-                tenant_id: string;
-                user_id: string;
+                tenantId: string;
+                userId: string;
                 email: string;
-                main_wallet: {
+                name: string | null;
+                roles: UserRoleEnum[];
+                mainWallet: {
                     type: WalletTypeEnum;
                     status: WalletStatusEnum;
+                    tenantId: string;
                     address: string;
-                    tenant_id: string;
-                    wallet_id: string;
-                    owner_id: string;
-                    verification_nonce: number;
-                };
+                    walletId: string;
+                    ownerId: string;
+                    verificationNonce: number | null;
+                } | null;
                 wallets: {
                     type: WalletTypeEnum;
                     status: WalletStatusEnum;
+                    tenantId: string;
                     address: string;
-                    tenant_id: string;
-                    wallet_id: string;
-                    owner_id: string;
-                    verification_nonce: number;
+                    walletId: string;
+                    ownerId: string;
+                    verificationNonce: number | null;
                 }[];
             }[];
             _output_out: {
-                name: string;
-                roles: UserRoleEnum[];
-                tenant_id: string;
-                user_id: string;
+                tenantId: string;
+                userId: string;
                 email: string;
-                main_wallet: {
+                name: string | null;
+                roles: UserRoleEnum[];
+                mainWallet: {
                     type: WalletTypeEnum;
                     status: WalletStatusEnum;
+                    tenantId: string;
                     address: string;
-                    tenant_id: string;
-                    wallet_id: string;
-                    owner_id: string;
-                    verification_nonce: number;
-                };
+                    walletId: string;
+                    ownerId: string;
+                    verificationNonce: number | null;
+                } | null;
                 wallets: {
                     type: WalletTypeEnum;
                     status: WalletStatusEnum;
+                    tenantId: string;
                     address: string;
-                    tenant_id: string;
-                    wallet_id: string;
-                    owner_id: string;
-                    verification_nonce: number;
+                    walletId: string;
+                    ownerId: string;
+                    verificationNonce: number | null;
                 }[];
             }[];
         }, unknown>;
@@ -766,4 +767,11 @@ declare const appRouter: _trpc_server.CreateRouterInner<_trpc_server.RootConfig<
 }>;
 declare type AppRouter = typeof appRouter;
 
-export { AppRouter as ClientAppRouter };
+declare type RouterInput = inferRouterInputs<AppRouter>;
+declare type RouterOutput = inferRouterOutputs<AppRouter>;
+declare type FindManyUserWalletInput = RouterInput['protected']['findManyUserWallet'];
+declare type FindManyUserWalletOutput = RouterOutput['protected']['findManyUserWallet'];
+declare type FindManyUserRoyaltyContractInput = RouterInput['protected']['findManyUserRoyaltyContract'];
+declare type FindManyUserRoyaltyContractOutput = RouterOutput['protected']['findManyUserRoyaltyContract'];
+
+export { AppRouter as ClientAppRouter, FindManyUserRoyaltyContractInput, FindManyUserRoyaltyContractOutput, FindManyUserWalletInput, FindManyUserWalletOutput, RouterInput, RouterOutput };

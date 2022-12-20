@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { findManyUserRoyaltyContract } from "../../utils/trpc";
-import { UserRoyaltyContractType } from "../../utils/types";
 import styles from "../../styles/Home.module.css";
+import { FindManyUserRoyaltyContractOutput } from "../../../dataflow-api";
 
 export const ListUserRoyaltyContract = () => {
-  const [userRoyaltyContracts, setUserRoyaltyContracts] = useState<UserRoyaltyContractType[]>()
+  const [userRoyaltyContracts, setUserRoyaltyContracts] = useState<FindManyUserRoyaltyContractOutput>()
   
   const handleOnClick = async () => { 
-    const userRoyaltyContracts = await findManyUserRoyaltyContract('152961b1-2276-4b32-aa87-818b3bd1e985')
+    const userRoyaltyContracts = await findManyUserRoyaltyContract(process.env.tenantId!)
     setUserRoyaltyContracts(userRoyaltyContracts);
   }
 
@@ -21,10 +21,10 @@ export const ListUserRoyaltyContract = () => {
             {
               userRoyaltyContracts?.map((userRoyaltyContract, index) => (
                 <div key={index}>
-                  <p><b>tenant_id</b>: {userRoyaltyContract.tenant_id}</p>
-                  <p><b>userId</b>: {userRoyaltyContract.user_id}</p>
+                  <p><b>tenantId</b>: {userRoyaltyContract.tenantId}</p>
+                  <p><b>userId</b>: {userRoyaltyContract.userId}</p>
                   <p><b>addresses</b>: {JSON.stringify(userRoyaltyContract.addresses)}</p>
-                  <p><b>royalty_contracts</b>{JSON.stringify(userRoyaltyContract.royalty_contracts)}</p>
+                  <p><b>royaltyContracts</b>{JSON.stringify(userRoyaltyContract.royaltyContracts)}</p>
                   <br />
                 </div>
               ))

@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { findManyUserWallet } from "../../utils/trpc";
-import { UserWallets } from "../../utils/types";
 import styles from "../../styles/Home.module.css";
+import { FindManyUserWalletOutput } from "../../../dataflow-api";
 
 export const ListUserWallet = () => {
-  const [userWallets, setUserWallets] = useState<UserWallets[]>()
+  const [userWallets, setUserWallets] = useState<FindManyUserWalletOutput>()
   
   const handleOnClick = async () => { 
     const userRoyaltyContracts = await findManyUserWallet(process.env.tenantId!)
@@ -21,12 +21,12 @@ export const ListUserWallet = () => {
             {
               userWallets?.map((userWallet, index) => (
                 <div key={index}>
-                  <p><b>tenant_id</b>: {userWallet.tenant_id}</p>
+                  <p><b>tenantId</b>: {userWallet.tenantId}</p>
                   <p><b>email</b>: {userWallet.email}</p>
                   <p><b>name</b>: {userWallet.name}</p>
                   <p><b>roles</b>: {JSON.stringify(userWallet.roles)}</p>
-                  <p><b>user_id</b>: {userWallet.user_id}</p>
-                  <p><b>main_wallet</b>: {JSON.stringify(userWallet.main_wallet)}</p>
+                  <p><b>userId</b>: {userWallet.userId}</p>
+                  <p><b>mainWallet</b>: {JSON.stringify(userWallet.mainWallet)}</p>
                   <p><b>wallets</b>: {JSON.stringify(userWallet.wallets)}</p>
 
                   <br />
